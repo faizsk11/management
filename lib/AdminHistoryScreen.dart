@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class ClientBuyHistoryScreen extends StatefulWidget {
-  const ClientBuyHistoryScreen({Key? key}) : super(key: key);
+class AdminHistoryScreen extends StatefulWidget {
+  const AdminHistoryScreen({Key? key}) : super(key: key);
 
   @override
-  State<ClientBuyHistoryScreen> createState() => _ClientBuyHistoryScreenState();
+  State<AdminHistoryScreen> createState() => _BuyHistoryScreenState();
 }
 
-class _ClientBuyHistoryScreenState extends State<ClientBuyHistoryScreen> {
-  List<String> dates = [
+class _BuyHistoryScreenState extends State<AdminHistoryScreen> {
+  List<String> date = [
     '22/02/2023',
     '22/02/2024',
     '22/02/2025',
@@ -29,6 +29,28 @@ class _ClientBuyHistoryScreenState extends State<ClientBuyHistoryScreen> {
     '6/03/2023',
     '7/03/2023',
     '8/03/2023',
+  ];
+  List<String> names = [
+    'Aarav Agarwal',
+    'Aditi Bhatnagar',
+    'Arjun Chopra',
+    'Divya Gupta',
+    'Gaurav Kumar',
+    'Isha Mehta',
+    'Karan Patel',
+    'Neha Sharma',
+    'Rahul Singh',
+    'Shreya Verma',
+    'Aarav Agarwal',
+    'Aditi Bhatnagar',
+    'Arjun Chopra',
+    'Divya Gupta',
+    'Gaurav Kumar',
+    'Isha Mehta',
+    'Karan Patel',
+    'Neha Sharma',
+    'Rahul Singh',
+    'Shreya Verma',
   ];
 
   List<String> quality = [
@@ -168,22 +190,45 @@ class _ClientBuyHistoryScreenState extends State<ClientBuyHistoryScreen> {
     '505',
   ];
 
-  List<String> filtereddates = [];
+  List<String> transaction = [
+    'BUY',
+    'SELL',
+    'SELL',
+    'BUY',
+    'SELL',
+    'BUY',
+    'BUY',
+    'SELL',
+    'BUY',
+    'SELL',
+    'SELL',
+    'SELL',
+    'SELL',
+    'BUY',
+    'BUY',
+    'SELL',
+    'BUY',
+    'BUY',
+    'SELL',
+    'BUY',
+  ];
+
+  List<String> filteredNames = [];
 
   TextEditingController searchController = TextEditingController();
 
   @override
   void initState() {
-    filtereddates = dates;
+    filteredNames = names;
     super.initState();
   }
 
-  void _filterdates(String query) {
+  void _filterNames(String query) {
     query = query.toLowerCase();
     setState(() {
-      filtereddates = dates.where((name) {
+      filteredNames = names.where((name) {
         final nameLower = name.toLowerCase();
-        final index = dates.indexOf(name);
+        final index = names.indexOf(name);
 
         final qualityItem = quality[index].toLowerCase();
         final rateItem = rate[index].toLowerCase();
@@ -191,6 +236,8 @@ class _ClientBuyHistoryScreenState extends State<ClientBuyHistoryScreen> {
         final totalItem = total[index].toLowerCase();
         final payItem = pay[index].toLowerCase();
         final creditItem = credit[index].toLowerCase();
+        final dateItem = date[index].toLowerCase();
+        final transactionItem = transaction[index].toLowerCase();
 
         final fieldPairs = query.split(',').map((field) => field.trim());
         for (var fieldPair in fieldPairs) {
@@ -237,7 +284,15 @@ class _ClientBuyHistoryScreenState extends State<ClientBuyHistoryScreen> {
                 return false;
               }
               break;
-
+            case 'transaction':
+              if (!transactionItem.contains(fieldValue)) {
+                return false;
+              }
+              break;
+            case 'date':
+              if (!dateItem.contains(fieldValue)) {
+                return false;
+              }
             default:
               continue;
           }
@@ -275,7 +330,7 @@ class _ClientBuyHistoryScreenState extends State<ClientBuyHistoryScreen> {
                 child: TextFormField(
                   maxLength: 100,
                   onChanged: (value) {
-                    _filterdates(value);
+                    _filterNames(value);
                   },
                   controller: searchController,
                   decoration: InputDecoration(
@@ -291,26 +346,29 @@ class _ClientBuyHistoryScreenState extends State<ClientBuyHistoryScreen> {
               width: MediaQuery.of(context).size.width,
               child: DataTable(
                 columns: [
-                  
                   DataColumn(label: Text('Date')),
+                  DataColumn(label: Text('Name')),
                   DataColumn(label: Text('Quality')),
                   DataColumn(label: Text('Rate')),
                   DataColumn(label: Text('Quantity')),
                   DataColumn(label: Text('Total')),
                   DataColumn(label: Text('Pay')),
                   DataColumn(label: Text('Credit')),
+                  DataColumn(label: Text('Transaction')),
                 ],
-                rows: List<DataRow>.generate(filtereddates.length, (index) {
-                  final dataIndex = dates.indexOf(filtereddates[index]);
+                rows: List<DataRow>.generate(filteredNames.length, (index) {
+                  final dataIndex = names.indexOf(filteredNames[index]);
                   return DataRow(
                     cells: [
-                      DataCell(Text(filtereddates[index])),
+                      DataCell(Text(date[dataIndex])),
+                      DataCell(Text(filteredNames[index])),
                       DataCell(Text(quality[dataIndex])),
                       DataCell(Text(rate[dataIndex])),
                       DataCell(Text(quantity[dataIndex])),
                       DataCell(Text(total[dataIndex])),
                       DataCell(Text(pay[dataIndex])),
                       DataCell(Text(credit[dataIndex])),
+                      DataCell(Text(transaction[dataIndex])),
                     ],
                   );
                 }),

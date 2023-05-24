@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:management/AdminHistoryScreen.dart';
 import 'package:management/AdminScreen.dart';
 import 'package:management/BuyScreen.dart';
 import 'package:management/ClinetScreen.dart';
@@ -312,61 +313,72 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           )),
                     ),
-                    ClipRRect(
-                        clipBehavior: Clip.antiAliasWithSaveLayer,
-                        child: Center(
-                          child: SizedBox.square(
-                            child: FittedBox(
-                              fit: BoxFit.scaleDown,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.blue.shade900,
-                                  border: Border.all(
-                                    width: 1,
-                                    style: BorderStyle.solid,
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AdminHistoryScreen()),
+                        );
+                      },
+                      child: ClipRRect(
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          child: Center(
+                            child: SizedBox.square(
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.blue.shade900,
+                                    border: Border.all(
+                                      width: 1,
+                                      style: BorderStyle.solid,
+                                    ),
                                   ),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(20.0),
-                                  child: Container(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.2,
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.2,
-                                    child: Center(
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Icon(
-                                            Icons.assignment,
-                                            size: 80,
-                                            color: Colors.white,
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.only(top: 20.0),
-                                            child: Text(
-                                              'HISTORY',
-                                              style: TextStyle(
-                                                  fontFamily: 'Montserrat',
-                                                  fontSize:
-                                                      MediaQuery.of(context)
-                                                              .size
-                                                              .height *
-                                                          0.03,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.white),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(20.0),
+                                    child: Container(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.2,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.2,
+                                      child: Center(
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Icon(
+                                              Icons.assignment,
+                                              size: 80,
+                                              color: Colors.white,
                                             ),
-                                          ),
-                                        ],
+                                            Padding(
+                                              padding:
+                                                  EdgeInsets.only(top: 20.0),
+                                              child: Text(
+                                                'HISTORY',
+                                                style: TextStyle(
+                                                    fontFamily: 'Montserrat',
+                                                    fontSize:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            0.03,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.white),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                        )),
+                          )),
+                    ),
                     ClipRRect(
                         clipBehavior: Clip.antiAliasWithSaveLayer,
                         child: Center(
