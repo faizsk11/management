@@ -216,7 +216,13 @@ class _OTPScreenState extends State<OTPScreen> {
                               builder: (context) => const HomeScreen()),
                         );
                       },
-                      child: Text('Submit'))),
+                      child: Text(
+                        'Submit',
+                        style: TextStyle(
+                          fontFamily: 'Montserrat',
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ))),
             )
           ],
         ),

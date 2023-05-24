@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class BuyScreen extends StatefulWidget {
-  const BuyScreen({Key? key}) : super(key: key);
+class SellScreen extends StatefulWidget {
+  const SellScreen({Key? key}) : super(key: key);
 
   @override
-  State<BuyScreen> createState() => _BuyScreenState();
+  State<SellScreen> createState() => _SellScreenState();
 }
 
-class _BuyScreenState extends State<BuyScreen> {
+class _SellScreenState extends State<SellScreen> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   List<String> allItems = [
     'item 5',
@@ -92,12 +92,12 @@ class _BuyScreenState extends State<BuyScreen> {
   @override
   Widget build(BuildContext context) {
     List<String> filteredItems = allItems
-        .where(
-            (item) => item.toLowerCase().contains(_searchQueryName.toLowerCase()))
+        .where((item) =>
+            item.toLowerCase().contains(_searchQueryName.toLowerCase()))
         .toList();
     List<String> qualityFilter = qualityItem
-        .where(
-            (item) => item.toLowerCase().contains(_searchQueryQuality.toLowerCase()))
+        .where((item) =>
+            item.toLowerCase().contains(_searchQueryQuality.toLowerCase()))
         .toList();
     return Scaffold(
          appBar: AppBar(

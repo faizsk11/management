@@ -1,20 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:management/AdminScreen.dart';
-import 'package:management/BuyScreen.dart';
-import 'package:management/ClinetScreen.dart';
-import 'package:management/SellScreen.dart';
+import 'package:management/AdminCreditScreen.dart';
+import 'package:management/AdminDueScreen.dart';
+import 'package:management/BuyHistroyScreen.dart';
+import 'package:management/NewClient.dart';
+import 'package:management/NewQuality.dart';
+import 'package:management/SellHistoryScreen.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class AdminScreen extends StatefulWidget {
+  const AdminScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<AdminScreen> createState() => _AdminScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _AdminScreenState extends State<AdminScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.black, //change your color here
+        ),
+        backgroundColor: Colors.white,
+        elevation: 0,
+      ),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(25.0),
@@ -52,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const BuyScreen()),
+                            builder: (context) => const BuyHistoryScreen()),
                       );
                     },
                     child: ClipRRect(
@@ -81,10 +90,20 @@ class _HomeScreenState extends State<HomeScreen> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          Icon(
-                                            Icons.account_balance_wallet,
-                                            size: 80,
-                                            color: Colors.white,
+                                          Padding(
+                                            padding: EdgeInsets.only(top: 20.0),
+                                            child: Text(
+                                              'Rs 20,000',
+                                              style: TextStyle(
+                                                  fontFamily: 'Montserrat',
+                                                  fontSize:
+                                                      MediaQuery.of(context)
+                                                              .size
+                                                              .height *
+                                                          0.03,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white),
+                                            ),
                                           ),
                                           Padding(
                                             padding: EdgeInsets.only(top: 20.0),
@@ -116,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const SellScreen()),
+                            builder: (context) => const SellHistoryScreen()),
                       );
                     },
                     child: ClipRRect(
@@ -145,10 +164,20 @@ class _HomeScreenState extends State<HomeScreen> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          Icon(
-                                            Icons.addchart_rounded,
-                                            size: 80,
-                                            color: Colors.white,
+                                          Padding(
+                                            padding: EdgeInsets.only(top: 20.0),
+                                            child: Text(
+                                              'Rs 32,800',
+                                              style: TextStyle(
+                                                  fontFamily: 'Montserrat',
+                                                  fontSize:
+                                                      MediaQuery.of(context)
+                                                              .size
+                                                              .height *
+                                                          0.03,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white),
+                                            ),
                                           ),
                                           Padding(
                                             padding: EdgeInsets.only(top: 20.0),
@@ -180,7 +209,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const AdminScreen()),
+                            builder: (context) => const AdminCreditScreen()),
                       );
                     },
                     child: ClipRRect(
@@ -209,15 +238,25 @@ class _HomeScreenState extends State<HomeScreen> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          Icon(
-                                            Icons.window_rounded,
-                                            size: 80,
-                                            color: Colors.white,
+                                          Padding(
+                                            padding: EdgeInsets.only(top: 20.0),
+                                            child: Text(
+                                              'Rs 12,018',
+                                              style: TextStyle(
+                                                  fontFamily: 'Montserrat',
+                                                  fontSize:
+                                                      MediaQuery.of(context)
+                                                              .size
+                                                              .height *
+                                                          0.03,
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.white),
+                                            ),
                                           ),
                                           Padding(
                                             padding: EdgeInsets.only(top: 20.0),
                                             child: Text(
-                                              'ADMIN',
+                                              'CREDIT',
                                               style: TextStyle(
                                                   fontFamily: 'Montserrat',
                                                   fontSize:
@@ -251,7 +290,84 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const ClientScreen()),
+                              builder: (context) => const AdminDueScreen()),
+                        );
+                      },
+                      child: ClipRRect(
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          child: Center(
+                            child: SizedBox.square(
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.blue.shade900,
+                                    border: Border.all(
+                                      width: 1,
+                                      style: BorderStyle.solid,
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(20.0),
+                                    child: Container(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.2,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.2,
+                                      child: Center(
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                  EdgeInsets.only(top: 20.0),
+                                              child: Text(
+                                                'Rs 30,340',
+                                                style: TextStyle(
+                                                    fontFamily: 'Montserrat',
+                                                    fontSize:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            0.03,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.white),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  EdgeInsets.only(top: 20.0),
+                                              child: Text(
+                                                'DUES',
+                                                style: TextStyle(
+                                                    fontFamily: 'Montserrat',
+                                                    fontSize:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            0.03,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.white),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )),
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const NewQualityScreen()),
                         );
                       },
                       child: ClipRRect(
@@ -282,15 +398,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                               MainAxisAlignment.center,
                                           children: [
                                             Icon(
-                                              Icons.person_search_sharp,
-                                              size: 80,
+                                              Icons.add_circle,
+                                              size: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.08,
                                               color: Colors.white,
                                             ),
                                             Padding(
                                               padding:
                                                   EdgeInsets.only(top: 20.0),
                                               child: Text(
-                                                'CLIENTS',
+                                                'NEW QUALITY',
                                                 style: TextStyle(
                                                     fontFamily: 'Montserrat',
                                                     fontSize:
@@ -312,119 +431,75 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           )),
                     ),
-                    ClipRRect(
-                        clipBehavior: Clip.antiAliasWithSaveLayer,
-                        child: Center(
-                          child: SizedBox.square(
-                            child: FittedBox(
-                              fit: BoxFit.scaleDown,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.blue.shade900,
-                                  border: Border.all(
-                                    width: 1,
-                                    style: BorderStyle.solid,
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const NewClientScreen()),
+                        );
+                      },
+                      child: ClipRRect(
+                          clipBehavior: Clip.antiAliasWithSaveLayer,
+                          child: Center(
+                            child: SizedBox.square(
+                              child: FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.blue.shade900,
+                                    border: Border.all(
+                                      width: 1,
+                                      style: BorderStyle.solid,
+                                    ),
                                   ),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(20.0),
-                                  child: Container(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.2,
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.2,
-                                    child: Center(
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Icon(
-                                            Icons.assignment,
-                                            size: 80,
-                                            color: Colors.white,
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.only(top: 20.0),
-                                            child: Text(
-                                              'HISTORY',
-                                              style: TextStyle(
-                                                  fontFamily: 'Montserrat',
-                                                  fontSize:
-                                                      MediaQuery.of(context)
-                                                              .size
-                                                              .height *
-                                                          0.03,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.white),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(20.0),
+                                    child: Container(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.2,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.2,
+                                      child: Center(
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Icon(
+                                              Icons.add_circle,
+                                              size: MediaQuery.of(context)
+                                                      .size
+                                                      .height *
+                                                  0.08,
+                                              color: Colors.white,
                                             ),
-                                          ),
-                                        ],
+                                            Padding(
+                                              padding:
+                                                  EdgeInsets.only(top: 20.0),
+                                              child: Text(
+                                                'ADD CLIENT',
+                                                style: TextStyle(
+                                                    fontFamily: 'Montserrat',
+                                                    fontSize:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height *
+                                                            0.03,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.white),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                        )),
-                    ClipRRect(
-                        clipBehavior: Clip.antiAliasWithSaveLayer,
-                        child: Center(
-                          child: SizedBox.square(
-                            child: FittedBox(
-                              fit: BoxFit.scaleDown,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.blue.shade900,
-                                  border: Border.all(
-                                    width: 1,
-                                    style: BorderStyle.solid,
-                                  ),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(20.0),
-                                  child: Container(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.2,
-                                    width:
-                                        MediaQuery.of(context).size.width * 0.2,
-                                    child: Center(
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Icon(
-                                            Icons.notifications_active,
-                                            size: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.08,
-                                            color: Colors.white,
-                                          ),
-                                          Padding(
-                                            padding: EdgeInsets.only(top: 20.0),
-                                            child: Text(
-                                              'NOTIFICATION',
-                                              style: TextStyle(
-                                                  fontFamily: 'Montserrat',
-                                                  fontSize:
-                                                      MediaQuery.of(context)
-                                                              .size
-                                                              .height *
-                                                          0.03,
-                                                  fontWeight: FontWeight.bold,
-                                                  color: Colors.white),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        )),
+                          )),
+                    ),
                   ],
                 ),
               ),
